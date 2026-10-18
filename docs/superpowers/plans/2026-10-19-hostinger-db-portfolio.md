@@ -41,41 +41,48 @@
 
 **Files:** `components/idea-box.tsx`, `app/page.tsx`, `app/globals.css`, `lib/db.ts`, `app/api/ideas/route.ts`, `app/api/health/database/route.ts`, `package.json`, `package-lock.json`.
 
-- [ ] Add a responsive React form for a short idea, with client-side feedback and accessible status messages.
-- [ ] Add a bounded MySQL connection pool using Hostinger environment variables and `127.0.0.1:3306`.
-- [ ] Validate/limit the input, create the small table if absent, write with a prepared statement, and read the inserted row back before returning success.
-- [ ] Add a database health route that returns only connectivity status, never connection details.
+- [x] Add a responsive React form for a short idea, with client-side feedback and accessible status messages.
+- [x] Add a bounded MySQL connection pool using Hostinger environment variables and the Hostinger-provided database host.
+- [x] Validate/limit the input, create the small table if absent, write with a prepared statement, and read the inserted row back before returning success.
+- [x] Add a database health route that returns only connectivity status, never connection details.
 
 ### Task 2: Document the reusable prompt and safe deployment setup
 
 **Files:** `PROJECT_PROMPT.md`, `README.md`.
 
-- [ ] Save a reusable prompt covering the stack, portfolio goals, design direction, database demo, GitHub deployment, and verification gates.
-- [ ] Document local commands, required Hostinger environment variable names, and the privacy behavior of the idea form; do not include secret values.
+- [x] Save a reusable prompt covering the stack, portfolio goals, design direction, database demo, GitHub deployment, and verification gates.
+- [x] Document local commands, required Hostinger environment variable names, and the privacy behavior of the idea form; do not include secret values.
 
 ### Task 3: Verify and publish source
 
 **Files:** Existing GitHub repository `mukundajmera/mukund-ajmera-portfolio`.
 
-- [ ] Run the production build and local HTTP checks, including form validation without DB credentials.
-- [ ] Commit and push the finished source to the existing `main` branch.
-- [ ] Verify the remote branch points at the intended commit.
+- [x] Run the production build and local HTTP checks, including form validation without DB credentials.
+- [x] Commit and push the finished source to the existing `main` branch.
+- [x] Verify the remote branch points at the intended commit.
 
 ### Task 4: Provision and deploy on Hostinger
 
 **Resources:** Active Business Web Hosting order, new free temporary subdomain, Node.js website, and dedicated MySQL database.
 
-- [ ] Confirm the active order, available site, GitHub installation/repository, and database state before writes.
-- [ ] Generate a free temporary subdomain, create a new Node.js website, and wait for setup completion.
-- [ ] Create a dedicated database and set its credentials as Hostinger environment variables without printing them.
-- [ ] Start the first Next.js build from the connected GitHub repository, then enable Git auto-deploy.
-- [ ] Push a small README-only commit to exercise automatic redeployment and verify the resulting build completed.
+- [x] Confirm the active order, available site, GitHub installation/repository, and database state before writes.
+- [x] Create a new Node.js website on a free temporary subdomain and wait for setup completion.
+- [x] Create a dedicated database and set its credentials as Hostinger environment variables without printing them.
+- [x] Build the Next.js site from the connected GitHub repository and verify Git auto-deploy is enabled.
+- [x] Push a small README-only commit to exercise automatic redeployment and verify the resulting build completed.
 
 ### Task 5: Verify live behavior
 
 **Files/URLs:** New Hostinger temporary URL and its `/api/health`, `/api/health/database`, and `/api/ideas` routes.
 
-- [ ] Verify the homepage and portfolio copy over HTTPS.
-- [ ] Verify the DB health endpoint reports connected.
-- [ ] Submit a real test idea, confirm the insert/read-back result, and confirm invalid input is rejected.
-- [ ] Re-read build logs/status and report the live URL, repository, tested behavior, and any limitations.
+- [x] Verify the homepage and portfolio copy over HTTPS.
+- [x] Verify the DB health endpoint reports connected.
+- [x] Submit a real test idea, confirm the insert/read-back result, and confirm invalid input is rejected.
+- [x] Re-read build logs/status and report the live URL, repository, tested behavior, and any limitations.
+
+## Execution record
+
+- Live site: <https://honeydew-rail-974143.hostingersite.com>.
+- Repository: `mukundajmera/mukund-ajmera-portfolio`, branch `main`; the auto-deploy verification push is commit `37d5411`.
+- The Hostinger build required `next build --webpack` and removal of the empty TypeScript Next config so it could use the WASM compiler fallback on the host's older glibc. The successful automatic build completed for commit `37d5411`.
+- Live checks returned HTTP 200 for the home page, app health, and database health. One test idea returned HTTP 201 after database insert/read-back; an empty submission returned HTTP 400. The form exposes no public submissions endpoint.
