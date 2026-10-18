@@ -58,6 +58,8 @@ Public profile links:
 
 This repository is configured as a Node.js app (`npm run build` / `npm run start`), not as a static export. Hostinger's managed Node.js hosting can deploy it from the connected GitHub repository. A free temporary Hostinger subdomain can be used; this project does not require a custom domain.
 
+Current temporary deployment: <https://honeydew-rail-974143.hostingersite.com>. Hostinger's Node.js deployment is connected to this repository's `main` branch, with automatic builds enabled for pushes.
+
 For a live server, `GET /api/health` checks the application and `GET /api/health/database` checks MySQL connectivity without returning database details.
 
 ## Reusable project prompt
