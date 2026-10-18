@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { WorkShelf } from "@/components/work-shelf";
+import { IdeaBox } from "@/components/idea-box";
 
 export default function HomePage() {
   return (
@@ -46,6 +47,8 @@ export default function HomePage() {
       </section>
 
       <WorkShelf />
+
+      <IdeaBox />
 
       <section className="about-section wrap" id="about" aria-labelledby="about-title">
         <div className="section-kicker"><span className="kicker-line" /> A little about the work</div>
